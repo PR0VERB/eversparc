@@ -79,7 +79,7 @@ def dfUnmodified(): #put all the dataframe ops in cached function
 
     df = df_.copy()
 
-#     df = df.sort_values('Dates')
+    df = df.sort_values('Dates')
 
     # Country Names
     countryData = pd.read_csv('countryData.csv')
