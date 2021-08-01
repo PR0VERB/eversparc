@@ -32,7 +32,7 @@ import streamlit as st
 # import tabula as tbl
 # import html5lib
 import copy
-
+import en_core_web_sm
 # Ideas: Check knowledge graph then use that to create search engine with the cosine similarity -- 
 # Can extract entities and check which are most related using cos
 # TODO: rank south africa first,
@@ -66,19 +66,20 @@ def homePage():
 
 @st.cache(allow_output_mutation=True)
 def loadNLP():
-    nlp_ = spacy.load('en_core_web_lg')
+#     nlp_ = spacy.load('en_core_web_sm')
+    nlp_ = en_core_web_sm.load()
     return nlp_
 
 nlp = loadNLP()
 
 @st.cache # from streamlit cheat sheet https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py
 def dfUnmodified(): #put all the dataframe ops in cached function
-    df_ = pd.read_csv(r'86077x278_1Jan2020.csv')
+    df_ = pd.read_csv('86077x278_1Jan2020.csv')
 
 
     df = df_.copy()
 
-    df = df.sort_values('Dates')
+#     df = df.sort_values('Dates')
 
     # Country Names
     countryData = pd.read_csv('countryData.csv')
