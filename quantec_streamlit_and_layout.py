@@ -73,7 +73,7 @@ nlp = loadNLP()
 
 @st.cache # from streamlit cheat sheet https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py
 def dfUnmodified(): #put all the dataframe ops in cached function
-    df_ = pd.read_csv(r'C:\Users\bseot\Documents\REAL_ESTATE\QUANTEC\ALY\QUANTEC_30DEC2020\QUANTEC_86077x278_1Jan2020.csv')
+    df_ = pd.read_csv(r'86077x278_1Jan2020.csv')
 
 
     df = df_.copy()
@@ -81,7 +81,7 @@ def dfUnmodified(): #put all the dataframe ops in cached function
     df = df.sort_values('Dates')
 
     # Country Names
-    countryData = pd.read_csv('../DATA/countryData.csv')
+    countryData = pd.read_csv('countryData.csv')
     countryNames = countryData['Country (or dependency)'].values
     countryNames = np.append(countryNames, ['Dates', 'OECD', 'G20', 'G7','Euro', 'Korea', 'Republic', 'USA', 'UK'])
 
