@@ -1,1 +1,1 @@
- web: gunicorn streamlit_test:app --log-file -
+web: sh setup.sh && python -m spacy download en_core_web_lg && streamlit run app.py
