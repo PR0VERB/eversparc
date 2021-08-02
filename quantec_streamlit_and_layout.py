@@ -41,6 +41,9 @@ import en_core_web_sm
 df_ = pd.read_csv('86077x278_1Jan2020.csv')
 st.dataframe(df_)
 
+countryData = pd.read_csv('countryData.csv')
+st.dataframe(countryData)
+
 # def main():
 
 #     menu = ['Home', 'About']
