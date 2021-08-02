@@ -72,7 +72,7 @@ def loadNLP():
 
 nlp = loadNLP()
 
-# @st.cache # from streamlit cheat sheet https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py
+@st.cache # from streamlit cheat sheet https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py
 def dfUnmodified(): #put all the dataframe ops in cached function
     df_ = pd.read_csv('86077x278_1Jan2020.csv')
 
