@@ -78,14 +78,14 @@ def dfUnmodified(): #put all the dataframe ops in cached function
 
 
     df = df_.copy()
-#     df['Dates'] = pd.to_datetime(df['Dates'])
-#     df = df.sort_values('Dates')
+    df['Dates'] = pd.to_datetime(df['Dates'])
+    df = df.sort_values('Dates')
 
     # Country Names
     countryData = pd.read_csv('countryData.csv')
     countryNames = countryData['Country (or dependency)'].values
-    countryNames = np.append(countryNames, ['OECD', 'G20', 'G7','Euro', 'Korea', 'Republic', 'USA', 'UK'])
-#     countryNames = np.append(countryNames, ['Dates', 'OECD', 'G20', 'G7','Euro', 'Korea', 'Republic', 'USA', 'UK'])
+#     countryNames = np.append(countryNames, ['OECD', 'G20', 'G7','Euro', 'Korea', 'Republic', 'USA', 'UK'])
+    countryNames = np.append(countryNames, ['Dates', 'OECD', 'G20', 'G7','Euro', 'Korea', 'Republic', 'USA', 'UK'])
 
     # Finally, the renaming
     dfCols = df.columns.values
@@ -200,9 +200,9 @@ def dfNew(columns):
     '''
     # Mutate bar
     df_new = df_unmodified
-#     df_new_index = df_new.Dates
-#     df_new = df_new.drop(['Dates'], axis = 1)
-#     df_new.index = df_new_index
+    df_new_index = df_new.Dates
+    df_new = df_new.drop(['Dates'], axis = 1)
+    df_new.index = df_new_index
     df_new = df_new[columns]
     df_new = df_new.dropna(how = 'all', axis = 0)
     return df_new
