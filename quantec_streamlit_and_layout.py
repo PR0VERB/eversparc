@@ -78,7 +78,7 @@ def dfUnmodified(): #put all the dataframe ops in cached function
 
 
     df = df_.copy()
-    df['Dates'] = pd.to_datetime(df['Dates'])
+#     df['Dates'] = pd.to_datetime(df['Dates'])
     df = df.sort_values('Dates')
 
     # Country Names
