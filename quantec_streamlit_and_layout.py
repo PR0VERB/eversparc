@@ -84,7 +84,6 @@ def dfUnmodified(): #put all the dataframe ops in cached function
     # Country Names
     countryData = pd.read_csv('countryData.csv')
     countryNames = countryData['Country (or dependency)'].values
-#     countryNames = np.append(countryNames, ['OECD', 'G20', 'G7','Euro', 'Korea', 'Republic', 'USA', 'UK'])
     countryNames = np.append(countryNames, ['Dates', 'OECD', 'G20', 'G7','Euro', 'Korea', 'Republic', 'USA', 'UK'])
 
     # Finally, the renaming
