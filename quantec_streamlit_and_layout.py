@@ -199,9 +199,9 @@ def dfNew(columns):
     columns: array of columns
     '''
     # Mutate bar
-    df_new = df_unmodified
-    df_new_index = df_new.Dates
-    df_new = df_new.drop(['Dates'], axis = 1)
+#     df_new = df_unmodified
+#     df_new_index = df_new.Dates
+#     df_new = df_new.drop(['Dates'], axis = 1)
     df_new.index = df_new_index
     df_new = df_new[columns]
     df_new = df_new.dropna(how = 'all', axis = 0)
