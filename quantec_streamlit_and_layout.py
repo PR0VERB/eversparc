@@ -37,12 +37,12 @@ import en_core_web_sm
 # Can extract entities and check which are most related using cos
 # TODO: rank south africa first,
 #       give suggestions to click instead of returning first result
+countryData = pd.read_csv('countryData.csv')
+st.dataframe(countryData)
 
 df_ = pd.read_csv('86077x278_1Jan2020.csv')
 st.dataframe(df_)
 
-countryData = pd.read_csv('countryData.csv')
-st.dataframe(countryData)
 
 # def main():
 
