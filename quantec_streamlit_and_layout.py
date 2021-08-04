@@ -41,7 +41,7 @@ countryData = pd.read_csv('countryData.csv')
 st.dataframe(countryData)
 
 df_ = pd.read_csv('86077x278_1Jan2020.csv')
-st.dataframe(df_.head(10)
+st.dataframe(df_.head(10))
 
 
 # def main():
