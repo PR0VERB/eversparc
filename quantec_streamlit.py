@@ -212,7 +212,10 @@ def dfNew(columns):
 # query = st.text_input('Enter a country name or economic variable')
 query = st.selectbox(label = 'Enter a country name or economic variable', options = dfCols)
 # matched = MatchingWords(query[0], dfCols)
-df_new = dfNew([query])
+try:
+    df_new = dfNew([query])
+except:
+    pass
 
 st.dataframe(df_new, width=5000, height=350)
 
