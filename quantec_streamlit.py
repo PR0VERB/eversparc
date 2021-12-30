@@ -210,7 +210,7 @@ def dfNew(columns):
 # Different arg, so function d1 executes
 # d3 = dfUnmodified(ref2)
 # query = st.text_input('Enter a country name or economic variable')
-query = st.selectbox(label = 'Enter a country name or economic variable', options = dfCols)
+query = st.selectbox(label = 'Enter a country name or economic variable', options = dfCols[1:])
 # matched = MatchingWords(query[0], dfCols)
 try:
     df_new = dfNew([query])
