@@ -39,12 +39,12 @@ import copy
 #       give suggestions to click instead of returning first result
 
 
-@st.cache(allow_output_mutation=True)
-def loadNLP():
-    nlp_ = spacy.load('en_core_web_lg')
-    return nlp_
+# @st.cache(allow_output_mutation=True)
+# def loadNLP():
+#     nlp_ = spacy.load('en_core_web_lg')
+#     return nlp_
 
-nlp = loadNLP()
+# nlp = loadNLP()
 
 @st.cache # from streamlit cheat sheet https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py
 def dfUnmodified(): #put all the dataframe ops in cached function
@@ -145,33 +145,33 @@ def MatchingWords(phrase, otherItems):
 
 # The code below finds the item indices
 
-@st.cache
-def countryVerifier(phrase, otherItems):
-    SIMS_ITEMS = MatchingWords(phrase, otherItems)
-    finalPhrases = [phras[0] for phras in SIMS_ITEMS]
+# @st.cache
+# def countryVerifier(phrase, otherItems):
+#     SIMS_ITEMS = MatchingWords(phrase, otherItems)
+#     finalPhrases = [phras[0] for phras in SIMS_ITEMS]
 
-    print(finalPhrases)
-#     iteratedFirst = iter(set(countryNames).intersection(set(finalPhrases[0].split()))) # doesn't work with South Africa
-#     countr = next(iteratedFirst, None)
-    doc = nlp(SIMS_ITEMS[0][0])
-    countr = [(X.text) for X in doc.ents][0]
-    countr = countr.translate(str.maketrans('', '', string.punctuation)).strip()
-    countr = set(countryNames).intersection({countr})
-    countr = list(countr)[0]
-#     countr = next(iteratedFirst, None)
-    print(countr)
-    tmp = [] #array that will store the phrases that have the countries
-    for phras in finalPhrases:
-        print((phras))
-        if countr in phras:
-            print(countr)
+#     print(finalPhrases)
+# #     iteratedFirst = iter(set(countryNames).intersection(set(finalPhrases[0].split()))) # doesn't work with South Africa
+# #     countr = next(iteratedFirst, None)
+#     doc = nlp(SIMS_ITEMS[0][0])
+#     countr = [(X.text) for X in doc.ents][0]
+#     countr = countr.translate(str.maketrans('', '', string.punctuation)).strip()
+#     countr = set(countryNames).intersection({countr})
+#     countr = list(countr)[0]
+# #     countr = next(iteratedFirst, None)
+#     print(countr)
+#     tmp = [] #array that will store the phrases that have the countries
+#     for phras in finalPhrases:
+#         print((phras))
+#         if countr in phras:
+#             print(countr)
 
-            tmp.append(phras)
-    NEW_SIMS_ITEMS = []
-    for item in SIMS_ITEMS:
-        if item[0] in tmp:
-            NEW_SIMS_ITEMS.append(item)
-    return NEW_SIMS_ITEMS, finalPhrases
+#             tmp.append(phras)
+#     NEW_SIMS_ITEMS = []
+#     for item in SIMS_ITEMS:
+#         if item[0] in tmp:
+#             NEW_SIMS_ITEMS.append(item)
+#     return NEW_SIMS_ITEMS, finalPhrases
 
 
 
@@ -179,14 +179,14 @@ def countryVerifier(phrase, otherItems):
 
 # In[19]:
 
-@st.cache
-def pearsonCorr(phrase, otherItems):
-    semanticSuggestions = countryVerifier(phrase, otherItems)
-    semanticSuggestions = [item[0] for item in semanticSuggestions[0]]
-    firstSuggestion = semanticSuggestions[0]
-    correlations = df_unmodified[semanticSuggestions].corrwith(df[firstSuggestion])
-    return correlations
-#     return f'{firstSuggestion} \n {twoToNine}'
+# @st.cache
+# def pearsonCorr(phrase, otherItems):
+#     semanticSuggestions = countryVerifier(phrase, otherItems)
+#     semanticSuggestions = [item[0] for item in semanticSuggestions[0]]
+#     firstSuggestion = semanticSuggestions[0]
+#     correlations = df_unmodified[semanticSuggestions].corrwith(df[firstSuggestion])
+#     return correlations
+# #     return f'{firstSuggestion} \n {twoToNine}'
 
 
 def dfNew(columns):
